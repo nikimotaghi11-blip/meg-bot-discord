@@ -412,7 +412,8 @@ async function handleCommand(message) {
   if (cmd==="give") {
     const mentionMatch=args[0]?.match(/^<@!?(\d+)>$/);
     if(mentionMatch){
-      const targetId=mentionMatch[1],amount=parseInt(args[1]?.replace(/,/g,"")??""10);
+const targetId = mentionMatch[1];
+const amount = parseInt(args[1]?.replace(/,/g, "") ?? "10");
       if(isNaN(amount)||amount<=0){await message.reply("Usage: `Meg give @user <amount>`");return;}
       const sb=getBalance(message.author.id);if(sb<amount){await message.reply(`Only have **${sb.toLocaleString()} 💎**!`);return;}
       const targetName=message.mentions.users.first()?.username??`<@${targetId}>`;
