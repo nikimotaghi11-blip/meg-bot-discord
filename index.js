@@ -422,7 +422,12 @@ const amount = parseInt(args[1]?.replace(/,/g, "") ?? "10");
     }
     if(args[0]?.toLowerCase()==="me"){
       if(!GIVE_SECRET||args[args.length-1]!==GIVE_SECRET){await message.reply("Nice try 😏");return;}
-      const amount=parseInt(args[1]?.replace(/,/g,"")??""10);if(isNaN(amount)||amount<=0){await message.reply("Usage: `Meg give me <amount> <secret>`");return;}
+const amount = parseInt(args[1]?.replace(/,/g, "") ?? "10");
+
+if (isNaN(amount) || amount <= 0) {
+    await message.reply("Usage: `Meg give me <amount> <secret>`");
+    return;
+}
       const nb=addBalance(message.author.id,amount);await message.reply(`💎 Added **${amount.toLocaleString()} 💎**! Balance: **${nb.toLocaleString()} 💎**`);return;
     }
     await message.reply("Nice try 😏");return;
